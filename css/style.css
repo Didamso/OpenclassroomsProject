@@ -1,8 +1,12 @@
 /****** General ***********/
 * {
-    font-family: 'Raleway', sans-serif;
-    box-sizing: border-box; 
+    font-family: "Raleway", "sans-serif";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+
 
 html {
     max-width: 1460px;
@@ -24,12 +28,15 @@ html {
 body {
     display: flex;
     justify-content: center;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .main-container {
     width: 100%;
     max-width: 1440px;
-    padding: 0 2rem;
+    padding: 0 50px;
     box-sizing: border-box;
     margin: 0 auto;
 }
@@ -63,19 +70,20 @@ nav ul {
     display: flex;
     justify-content: flex-end;
     gap: 70px;
-    margin-top: 30px 10px;
+    margin-top: 20px;
     list-style-type: none;  
 }
 
 nav a:hover {
     color: var(--main-color);
-    border-top: solid var(--main-color);
+    border-top: 2px solid var(--main-color);
+    padding-top: 15px;
 }
 
 
 /***Filtre et Recherche***/
 
-.header-main-section {
+.main-section {
     margin: 30px 0 35px 0;
     display: flex;
     flex-direction: column;
@@ -86,19 +94,19 @@ nav a:hover {
 
 
 
-.header-main-text {
-    height: 100px;
+.main-text {
+    height: 50px;
 }
 
-.header-main-text h1 {
+.main-text h1 {
     font-size: 20px;
     font-weight: bold;
 }
 
-.header-searchbar {
+.searchbar {
     display: flex;
-    width: 400px;
-    height: auto;
+    width: 25em;
+    height: 50px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -106,22 +114,24 @@ nav a:hover {
     border-radius: 15px;
 }
 
-.header-searchbar-pin {
+.searchbar-pin {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 50px;
+    height: 3.1em;
+    width: 3.1em;
     background-color: var(--main-bg-color);
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
 }
 
-.header-searchbar-pin .fa-solid {
+
+
+.searchbar-pin .fa-solid {
     color: black;
 }
 
-.header-searchbar input[type="text"] {
+.searchbar input[type="text"] {
     position: relative;
     left: 24px;
     font-size: 18px;
@@ -129,12 +139,13 @@ nav a:hover {
     border: none;
 }
 
-.header-searchbar-city {
+.searchbar-city {
     display: flex;
     align-items: center;
+    width: 14em;
 }
 
-.header-searchbar-search {
+.searchbar-search {
     display: flex;
     width: 130px;
     height: 50px;
@@ -148,33 +159,41 @@ nav a:hover {
     z-index: 2;
 }
 
-.header-searchbar-search:hover {
+.searchbar-search:hover {
     opacity: 0.8;
 }
 
-.header-searchbar-search h2 {
+.fa-seventeen {
+    position: absolute;
+    visibility: hidden;
+}
+
+
+.searchbar-search h2 {
     font-size: 18px;
 }
 
 
-.header-filters {
+.filters {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 
-.header-filters-title,
-.header-filters-options {
+.filters-title,
+.filters-options,
+.fa-solide {
     display: flex;
-    gap: 20px;
+    gap: 1.5em;
+    padding-left: 1.5em;
 }
 
-.header-filters h2 {
+.filters h2 {
     font-size: 18px;
 }
 
-.header-filters-row {
+.filters-row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -182,26 +201,35 @@ nav a:hover {
     border: 2px solid var(--main-bg-color);
     border-radius: 25px;
     height: 50px;
+    padding-left: 20px;
+    padding: 15px;
+    
 }
 
-.header-filters-options h2 {
-    padding: 15px 20px 15px 15px;
+.filters-options h2 {
+    padding: 15px 0px 15px 0px;
     white-space: nowrap;
     font-size: 18px;
 }
 
-.header-filters-row:hover {
+.filters-row:hover {
     background-color: var(--filter-bg-color);
     transition: 0.15s;
 }
 
-.header-tooltip {
+.favicon {
+    padding-left: 0.1em;
+    padding-right: 0.5em;
+}
+
+
+.tooltip {
     height: 25px;
     display: flex;
     align-items: center;
 }
 
-.header-tooltip-icon {
+.tooltip-icon {
     height: 30px;
     width: 30px;
     min-width: 30px;
@@ -213,31 +241,86 @@ nav a:hover {
     
 }
 
-.header-tooltip p {
+.tooltip p {
     padding-left: 10px;
 }
 
+.mini-icon {
+    font-size: 0.8em;
+}
+/* __________ END OF HEADER ___________*/
+
+
+/****** Hebergements ***********/
+.hebergements {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 65%;
+}
+
+.hebergements-cards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 30px;
+}
 
 
 
-
-
-
-
-
-.card {
+.hebergements-card {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 20px;
-    padding: 5px;
     filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.1));
+    transition: 0.2s ease-out;
+
 }
 
-.card img {
+.hebergements-card:hover {
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.hebergements-cards img {
+    height: 124px;
+    padding: 4px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     object-fit: cover;
+    width: 100%;
 }
 
-.card-title {
+.hebergements-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 12px;
+    margin-top: 4px;
+    margin-bottom: 15px;
+    height: 64.25px;
+}
+
+.hebergements-card-title-name {
     font-size: 16px;
+    
+}
+
+.hebergements-card-subtitle-name {
+    font-size: 14px;
+
+}
+
+.hebergements-card-rating {
+    width: 81px;
+    height: 13.25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hebergements-card-rating .fa-star {
+    font-size: 13.25px;
+    width: 14.29px;
 }
 
 .euro {
@@ -248,10 +331,18 @@ nav a:hover {
     color: var(--main-bg-color)
 }
 
+.section-title {
+    margin: 0;
+    font-size: 22px;
+}
+
+
+
 /****** Hebergements And Populaires ***********/
 .hebergements-and-populaires {
     display: flex;
     justify-content: space-between;
+    height: 614px;
 }
 
 .hebergements-and-populaires section {
@@ -261,12 +352,8 @@ nav a:hover {
     box-sizing: border-box;
 }
 
-/****** Hebergements ***********/
-.hebergements {
-    width: 65%;
-}
-
 /****** Populaires ***********/
+
 .populaires {
     width: 32%;
 }
@@ -280,10 +367,13 @@ nav a:hover {
 .populaires-cards .card {
     display: flex;
     margin-top: 33px;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .populaires-cards img {
     width: 33%;
+    padding: 4px;
     height: 136px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -311,8 +401,9 @@ nav a:hover {
     margin-bottom: 5px;
 }
 
-
-
+.populaires-card:hover {
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2);
+}
 
 /* Le code ci-dessous correspond à la version responsive uniquement */
 
